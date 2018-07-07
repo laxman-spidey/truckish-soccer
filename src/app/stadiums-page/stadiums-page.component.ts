@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { STADIUMS } from '../stadiums.model';
+import { Stadium } from '../models';
 
 @Component({
   selector: 'app-stadiums-page',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StadiumsPageComponent implements OnInit {
 
-  constructor() { }
+  stadiums: Stadium[];
+  constructor() { 
+    this.stadiums = STADIUMS;
+  }
 
   ngOnInit() {
+  
   }
 
 }
