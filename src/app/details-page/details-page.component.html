@@ -1,0 +1,29 @@
+<div>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Shiba Inu</mat-card-title>
+        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+      </mat-card-header>
+      <agm-map 
+        [latitude]="stadium.lat"
+        [longitude]="stadium.lng"
+        [zoom]="16"
+        [disableDefaultUI]="false"
+        [zoomControl]="false"
+        (mapClick)="mapClicked($event)">
+        <agm-marker 
+            [latitude]="stadium.lat"
+            [longitude]="stadium.lng"
+            [label]="stadium.name"
+            [markerDraggable]="true">
+          <agm-info-window>
+            <strong>stadium.name</strong>
+          </agm-info-window>
+        </agm-marker>
+      </agm-map>
+      <mat-card-content>
+    
+      </mat-card-content>
+    </mat-card>
+</div>

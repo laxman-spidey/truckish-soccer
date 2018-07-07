@@ -1,6 +1,6 @@
 <div>
-    <div *ngFor="let stadium of stadiums">
-        <app-stadium-card [stadium]="stadium"></app-stadium-card>
+    <div>
+        <app-stadium-card *ngFor="let stadium of stadiums" [stadium]="stadium"></app-stadium-card>
     </div>
     
 </div>

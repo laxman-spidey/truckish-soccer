@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Stadium } from '../../models'
+import { Stadium } from '../../models';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-stadium-card',
@@ -9,10 +11,16 @@ import { Stadium } from '../../models'
 export class StadiumCardComponent implements OnInit {
 
   @Input() stadium: Stadium;
-  constructor() { 
+  constructor(
+                private router: Router
+              ) { 
     
   }
 
+  showDetailsPage() {
+    console.log('showDetailsPage');
+    this.router.navigateByUrl('/stadiums/'+this.stadium.id);
+  }
   ngOnInit() {
   }
 

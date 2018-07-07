@@ -4,4 +4,6 @@ export class Stadium {
     address: string;
     image: string;
     description: string;
+    lat: number;
+    lng: number;
 }

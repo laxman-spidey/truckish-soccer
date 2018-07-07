@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { AgmCoreModule } from '@agm/core';
 
 import {
   MatAutocompleteModule,
@@ -40,19 +42,29 @@ import {
 import { AppComponent } from './app.component';
 import { StadiumsPageComponent } from './stadiums-page/stadiums-page.component';
 import { StadiumCardComponent } from './stadiums-page/stadium-card/stadium-card.component';
+import { DetailsPageComponent } from './details-page/details-page.component';
 
+const routes = [
+  { 
+    path: 'stadiums', 
+    component: StadiumsPageComponent 
+  },
+  { 
+    path: 'stadiums/:id', 
+    component: DetailsPageComponent 
+  },
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     StadiumsPageComponent,
     StadiumCardComponent,
-    
-    
-    
+    DetailsPageComponent,
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot  (routes),
     //Material Components
     MatAutocompleteModule,
     MatButtonModule,
@@ -86,6 +98,11 @@ import { StadiumCardComponent } from './stadiums-page/stadium-card/stadium-card.
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    
+    //Google maps
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAEWi0Wk1E1ivWeuTgS0ItPqg77eRyg2AU'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
