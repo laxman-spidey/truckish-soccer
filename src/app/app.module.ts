@@ -1,8 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
-
+import {LoginModule} from './login/login.module';
+import {AuthService} from './login/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { MatFormFieldModule  } from '@angular/material';
+import { FlexLayoutModule } from "@angular/flex-layout";
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -39,10 +44,16 @@ import {
   
 } from '@angular/material';
 
+
 import { AppComponent } from './app.component';
 import { StadiumsPageComponent } from './stadiums-page/stadiums-page.component';
 import { StadiumCardComponent } from './stadiums-page/stadium-card/stadium-card.component';
 import { DetailsPageComponent } from './details-page/details-page.component';
+import { AddStadiumCardComponent } from './stadiums-page/add-stadium-card/add-stadium-card.component';
+import { NewStadiumDialogComponent } from './new-stadium-dialog/new-stadium-dialog.component';
+import { AngularFireModule} from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { FirebaseConfig } from './firebase-config';
 
 const routes = [
   { 
@@ -61,10 +72,16 @@ const routes = [
     StadiumsPageComponent,
     StadiumCardComponent,
     DetailsPageComponent,
+    AddStadiumCardComponent,
+    NewStadiumDialogComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot  (routes),
+    HttpClientModule,
+    LoginModule,
+    
     //Material Components
     MatAutocompleteModule,
     MatButtonModule,
@@ -99,12 +116,22 @@ const routes = [
     MatToolbarModule,
     MatTooltipModule,
     
+    FlexLayoutModule,
     //Google maps
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAEWi0Wk1E1ivWeuTgS0ItPqg77eRyg2AU'
     }),
+    AngularFireModule.initializeApp(FirebaseConfig),
+    AngularFireAuthModule,
+
+    
+    MatFormFieldModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  entryComponents: [NewStadiumDialogComponent],
+  providers: [AuthService],
+  bootstrap: [AppComponent],
+  schemas : [
+        CUSTOM_ELEMENTS_SCHEMA    
+    ]
 })
 export class AppModule { }

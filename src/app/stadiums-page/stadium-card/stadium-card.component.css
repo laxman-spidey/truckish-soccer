@@ -2,3 +2,11 @@
     max-width: 400px;
     margin: 10px;
 }
+
+.few-chars {
+    /*font-family: monospace;*/
+    width: 25ch;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
